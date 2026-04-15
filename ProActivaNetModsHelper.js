@@ -6,6 +6,8 @@
 // @description  Helper para activar las customizaciones de proActivaNet
 // @match        */proactivanet/servicedesk/incidents/formIncidents/formIncidents.paw
 // @require  https://code.jquery.com/jquery-3.6.0.min.js
+// @downloadURL  https://github.com/hirkkak/ProactivaNet_Mods/raw/main/ProActivaNetModsHelper.js
+// @updateURL    https://github.com/hirkkak/ProactivaNet_Mods/raw/main/ProActivaNetModsHelper.js
 // ==/UserScript==
 
 //http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
