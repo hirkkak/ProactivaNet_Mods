@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name     ProActivaNet Mario Helper
 // @namespace    ProactivaNet
-// @version      2026-04-15
+// @version      2026-04-15a
 // @author       Hirkkak
 // @description  Helper para activar las customizaciones de proActivaNet
 // @match        */proactivanet/servicedesk/incidents/formIncidents/formIncidents.paw
-// @require  https://code.jquery.com/jquery-3.6.0.min.js
+// @require      https://code.jquery.com/jquery-3.6.0.min.js
+//
+// @supportURL   https://github.com/hirkkak/ProactivaNet_Mods/issues
 // @downloadURL  https://github.com/hirkkak/ProactivaNet_Mods/raw/main/ProActivaNetModsHelper.js
 // @updateURL    https://github.com/hirkkak/ProactivaNet_Mods/raw/main/ProActivaNetModsHelper.js
 // ==/UserScript==
