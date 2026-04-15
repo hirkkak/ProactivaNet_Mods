@@ -1,11 +1,9 @@
 // ==UserScript==
 // @name     ProActivaNet Mario Helper
 // @namespace    ProactivaNet
-// @version      2026-04-08
+// @version      2026-04-15
 // @description  Activa las customizaciones de proActivaNet
-// @include  http://192.168.147.39/proactivanet/servicedesk/incidents/formIncidents/formIncidents.paw*
-// @include  https://cauche.chebro.es/proactivanet/servicedesk/incidents/formIncidents/formIncidents.paw*
-// @include  https://cau.chebro.es/proactivanet/servicedesk/incidents/formIncidents/formIncidents.paw*
+// @match        */proactivanet/servicedesk/incidents/formIncidents/formIncidents.paw
 // @require  https://code.jquery.com/jquery-3.6.0.min.js
 // ==/UserScript==
 
