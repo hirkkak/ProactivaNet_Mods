@@ -1,12 +1,10 @@
 // ==UserScript==
 // @name         ProActivaNet Mario Mods
 // @namespace    ProactivaNet
-// @version      2026-04-08
+// @version      2026-04-09
 // @description  Modificaciones de Mario para proActivaNet
 // @author       Mario Molinos
-// @match        http://192.168.147.39/proactivanet/servicedesk/incidents/formIncidents/formIncidents.paw*
-// @match        https://cauche.chebro.es/proactivanet/servicedesk/incidents/formIncidents/formIncidents.paw*
-// @match        https://cau.chebro.es/proactivanet/servicedesk/incidents/formIncidents/formIncidents.paw*
+// @match        */proactivanet/servicedesk/incidents/formIncidents/formIncidents.paw*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=147.39
 // @require      https://code.jquery.com/jquery-3.6.0.min.js
 // @grant        GM_getValue
@@ -14,7 +12,11 @@
 // @grant        GM_log
 // @grant        GM_xmlhttpRequest
 // @grant        GM.xmlHttpRequest
-
+//
+// @require      https://github.com/hirkkak/ProactivaNet_Mods/raw/main/ProActivaNetModsHelper.js
+// @supportURL   https://github.com/hirkkak/ProactivaNet_Mods/issues
+// @downloadURL  https://github.com/hirkkak/ProactivaNet_Mods/raw/main/ProActivaNetMods.js
+// @updateURL    https://github.com/hirkkak/ProactivaNet_Mods/raw/main/ProActivaNetMods.js
 // ==/UserScript==
 
 //const MODIFICACIONES_ACTIVADAS = "StopContinueBtn";
