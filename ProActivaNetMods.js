@@ -3,7 +3,7 @@
 // @namespace    ProactivaNet
 // @version      2026-04-09
 // @description  Modificaciones de Mario para proActivaNet
-// @author       Mario Molinos
+// @author       Hirkkak
 // @match        */proactivanet/servicedesk/incidents/formIncidents/formIncidents.paw*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=147.39
 // @require      https://code.jquery.com/jquery-3.6.0.min.js
