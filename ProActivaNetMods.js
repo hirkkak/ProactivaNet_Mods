@@ -114,49 +114,6 @@ var scriptActivo = localStorage.getItem("StopContinueBtn");
         console.log("Fin del script.");
     });
 
-
-    //Descartado porque es una locura en ingeniería inversa ver de donde salen.
-    function getHoras()
-    {
-        console.log("Obteniendo horas...");
-        GM_xmlhttpRequest ( {
-            method:     "POST",
-            url:        "http://192.168.147.39/proactivanet/servicedesk/incidents/allIncidents/allIncidents.paw",
-            data:       "pawData=showArchivedButton=1&pawNode=treeAllTickets&pawParentData=&pawParentNode=node&pawNodeExtra=",
-
-            /*headers:    {
-                "POST": "/proactivanet/servicedesk/incidents/allIncidents/allIncidents.paw?pawData=showArchivedButton%3D1&pawNode=treeAllTickets&pawParentData=&pawParentNode=node&pawNodeExtra= HTTP/1.1",
-                "Host": "192.168.147.39",
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0",
-                "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
-                "Accept-Encoding": "gzip, deflate",
-                "Referer": "http://192.168.147.39/proactivanet/servicedesk/incidents/allIncidents/allIncidents.paw?pawData=showArchivedButton%3D1&pawNode=treeAllTickets&pawParentData=&pawParentNode=node&pawNodeExtra=",
-                "Content-Length": "15581",
-                "Origin": "http://192.168.147.39",
-                "Connection": "keep-alive",
-                "Cookie": "pawAgentContext=Romance%20Standard%20Time/1760/990/24/1760/953; pawAgentContext=Romance%20Standard%20Time/1760/990/24/1760/953; pawUseReferee=false; pawAuthCookie=3H4m2F\\cnqVSd6VyawagBjvQINsFq1BF53o8jypAUIMND0nGGPHyzwvwTTcLie5nzEIO6GJI/jFRP8z2\\2KXn7hYH0DHJZluKdLk/DHaDL0pD3LY6M7CTCCHSGDC86MHc3qVmv/BDZTsNnx/ykCoOjg8rkosrQRSK6eZ7rRq7N2gAZLEMOt0J7ZV\\VPFdBhWyP/2cb5Tp4xEOH4isucYqwwrfSg91i8d4GksukNWG2OFQK8wPx0HEg==",
-                "pawAgentContext": "Romance%20Standard%20Time/1760/990/24/1760/953",
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Priority": "u=0",
-                "Pragma": "no-cache"
-            },
-            /*onload: async function(res){
-                console.log("res:", res);
-                if(res.response) res = res.response;
-                else if(res.json) res = await res.json();
-                console.log(res);
-            },*/
-            onload: function (res) {
-                console.log("res:", res);
-                //$("#input").get()[0].value=response.responseText;
-            },
-            onerror: function(e) {
-                console.log ("error:" , e);
-                // ...
-            }
-        } );
-    }
-
     //var autocheck = setTimeout(modificarCombo, 1000);
     //var autocheck = setInterval(modificarCombo, 2000);
 
@@ -179,16 +136,6 @@ var scriptActivo = localStorage.getItem("StopContinueBtn");
             case "diciembre": return 12;
         }
         return "0";
-
-        /*
-        const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio","agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-        console.log ("Buscando: " + strMes);
-        meses.forEach((item, index) => {
-            if (item == strMes) console.log ("Encontrado: " + item + " " + (index + 1));
-            //console.log(`${index+1}: ${item}`);
-            return (index + 1);
-        });
-        */
     }
 
 
@@ -210,19 +157,10 @@ var scriptActivo = localStorage.getItem("StopContinueBtn");
         //$inputButtonAceptar.prependTo(objDestino[0].parentElement);
         $inputButtonAceptar.appendTo(objDestino[0].parentElement);
 
-        //Click en combo tragsa para ocultar
+        //Click en combo trgsa para ocultar
         $("span.pawDFSelPopup").click(function(){
             contClick++;
-            if (contClick>1) {
-                /*if ($("#fldPadIncidents_DedicatedHoursFirstLine_H").val() > 0
-                    || $("#fldPadIncidents_DedicatedHoursFirstLine_M").val() > 0)
-                {
-                    $inputButtonAceptar.css("display","none");
-                }
-                else
-                {
-                    $inputButtonAceptar.attr('value', 'Seleccionar Duracion');
-                }*/
+            if (contClick>1) {                
                 checkBotonAceptar();
             }
             //console.log("Click");
