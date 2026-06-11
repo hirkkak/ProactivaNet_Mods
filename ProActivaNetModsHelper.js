@@ -38,7 +38,7 @@
     var btnControl = new PersistentButton (
         "gmContinueBtn", //-- HTML id
         "StopContinueBtn", //-- Storage label
-        ["Modificaciones detenidass :(", "Modificaciones activadas"], //-- Text that the button cycles through
+        ["Modificaciones detenidas :(", "Modificaciones activadas"], //-- Text that the button cycles through
         [false, true] //-- Matching values for the button's states
     );
 
@@ -106,7 +106,7 @@
 
             storeValue ();
             setButtonTextAndVal ();
-            location.reload();
+            window.location.href = window.location.href
         };
 
 
