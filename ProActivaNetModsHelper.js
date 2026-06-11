@@ -106,6 +106,7 @@
 
             storeValue ();
             setButtonTextAndVal ();
+            location.reload();
         };
 
 
