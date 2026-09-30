@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ProActivaNet Mario Mods
 // @namespace    ProactivaNet
-// @version      2026-07-13
+// @version      2026-09-30
 // @description  Modificaciones de Mario para proActivaNet
 // @author       Hirkkak
 // @match        */proactivanet/servicedesk/incidents/formIncidents/formIncidents.paw*
@@ -23,62 +23,73 @@
 // ==/UserScript==
 
 var scriptActivo = localStorage.getItem("StopContinueBtn");
+
+if (!scriptActivo || scriptActivo === "false")
+{
+    console.log("Modificaciones detenidas"); return;
+}
+console.log("Modificaciones activadas");
+
 (function() {
     //console.clear();
     var $ = window.jQuery;
-
 
     // Solo para la Lista de incidencias
     if (window.location.href.indexOf("allIncidents") > 0){
         //////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////
 
-const JQ_FILTRO = 'input.pawPTableToolBarSelEdit';
-const JQ_FILTRO_ICON = 'button.pawPTableToolBarSelEditBtn';
+        const JQ_FILTRO = 'input.pawPTableToolBarSelEdit';
+        const JQ_FILTRO_ICON = 'button.pawPTableToolBarSelEditBtn';
 
-function ejecutarFiltroFecha() {
-    // Si el buscador real no está en este frame, no hacemos nada
-    if ($(JQ_FILTRO).length === 0) return;
+        function ejecutarFiltroFecha() {
+            // Si el buscador real no está en este frame, no hacemos nada
+            if ($(JQ_FILTRO).length === 0 || !scriptActivo) return;
 
-    const fechaGuardada = GM_getValue("miFecha");
-    if (!fechaGuardada) return;
+            // Si las modificaciones estan desactivadas salimos. (no funciona y no se pq)
+            //var $btnModificaciones = $("#gmContinueBtn")[0];
+            // if ($btnModificaciones.value == false) { return; }
 
-    const [year, month, day] = fechaGuardada.split('-');
-    if (!year || !month || !day) return;
 
-    const TEXTO_BUSCAR = `${day}/${month}/${year}`;
+            const fechaGuardada = GM_getValue("miFecha");
+            if (!fechaGuardada) return;
 
-    // 1. Escribimos el valor usando jQuery (como te funcionaba al principio)
-    $(JQ_FILTRO).val(TEXTO_BUSCAR);
-    console.log("Script 1: Aplicando filtro ->", TEXTO_BUSCAR);
+            const [year, month, day] = fechaGuardada.split('-');
+            if (!year || !month || !day) return;
 
-    // 2. Hacemos el clic automático con un margen para que procese el texto
-    setTimeout(() => {
-        if ($(JQ_FILTRO_ICON).length > 0) {
-            $(JQ_FILTRO_ICON).trigger("click");
-            console.log("Script 1: ¡Clic enviado con jQuery!");
-        } else {
-            console.warn("Script 1: No se encontró el botón del filtro para hacer clic.");
+            const TEXTO_BUSCAR = `${day}/${month}/${year}`;
+
+            // 1. Escribimos el valor usando jQuery (como te funcionaba al principio)
+            $(JQ_FILTRO).val(TEXTO_BUSCAR);
+            console.log("Script 1: Aplicando filtro ->", TEXTO_BUSCAR);
+
+            // 2. Hacemos el clic automático con un margen para que procese el texto
+            setTimeout(() => {
+                if ($(JQ_FILTRO_ICON).length > 0) {
+                    $(JQ_FILTRO_ICON).trigger("click");
+                    console.log("Script 1: ¡Clic enviado con jQuery!");
+                } else {
+                    console.warn("Script 1: No se encontró el botón del filtro para hacer clic.");
+                }
+            }, 300);
         }
-    }, 300);
-}
 
 
-// Escuchador de Tampermonkey (el que asegura la mensajería entre ambos)
-if (typeof GM_addValueChangeListener === "function") {
-    GM_addValueChangeListener("miFecha", function() {
-        console.log("Script 1: Cambio de fecha recibido en este frame.");
+        // Escuchador de Tampermonkey (el que asegura la mensajería entre ambos)
+        if (typeof GM_addValueChangeListener === "function") {
+            GM_addValueChangeListener("miFecha", function() {
+                console.log("Script 1: Cambio de fecha recibido en este frame.");
+                ejecutarFiltroFecha();
+            });
+        }
+
+        // Ejecución inicial por si acaso al cargar
         ejecutarFiltroFecha();
-    });
-}
-
-// Ejecución inicial por si acaso al cargar
-ejecutarFiltroFecha();
 
         //////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////
 
-     //return;
+        //return;
     }
 
     'use strict';
@@ -231,6 +242,7 @@ if (typeof GM_addValueChangeListener === "function") {
             $inputButtonAceptar.css("display","none");
         });
         var objDestino = $("#pawSvcAuthUsers_idCreatorSign");
+        if (objDestino == null || objDestino[0] == null) return;
         //objDestino.insertBefore($inputButtonAceptar, objDestino.parent.firstChild);
         //$inputButtonAceptar.prependTo(objDestino[0].parentElement);
         $inputButtonAceptar.appendTo(objDestino[0].parentElement);
@@ -400,7 +412,7 @@ if (typeof GM_addValueChangeListener === "function") {
         var objDestino = objOcultar.parent();
 
         //Oculta el campo de precio euros
-        objOcultar[0].style.display = "none";
+        if (objOcultar[0] != null) objOcultar[0].style.display = "none";
 
 
         //Botones de minutos y horas
@@ -668,6 +680,7 @@ $("#inputFecha").change(function () {
     {
         console.log("Inicio Ocultar Campos");
         var objDestino = $("td.pawFormPageToolBarTd");
+        if (objDestino == null || objDestino[0] == null) return;
 
         //Oculta los campos normales frm
         //Convierte los selectores jquery en objetos y los agrega a OBJ_OCULTOS
@@ -697,7 +710,7 @@ $("#inputFecha").change(function () {
 
         //Ocultar campos
         for (const obj of OBJ_OCULTOS) {
-            obj.style = "display: none";
+            if (obj) obj.style = "display: none";
             console.log (obj);
         }
 
